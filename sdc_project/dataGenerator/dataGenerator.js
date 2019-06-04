@@ -24,3 +24,4 @@ const createOneData = function( id ) {
   return oneImage;
 };
 
+//at least 10 images per room
