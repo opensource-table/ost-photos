@@ -18,7 +18,7 @@ class App extends React.Component {
   }
   componentDidMount() {
     $.get({
-      url: 'http://localhost:3050/photos/',
+      url: `http://localhost:3050/photos/${window.location.href.match(/id\s*=\s*(.*)/)[1]}`,
       dataType: 'json',
       success: allPhotos => { this.setState({ photos: allPhotos, isLoading: false }) },
       error: err => { console.log('Failed..', err) },

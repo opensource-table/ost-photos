@@ -13,14 +13,14 @@ const casual = require('casual');
 
 console.log(faker.date.past(10));
 
-function createOneData(id) {
-  let res = { id, };
+const createOneData = function( id ) {
+  let oneImage = { id, };
   res.restaurant = faker.company.companyName();
   res.url = faker.image.food();
   res.timestamp = casual.date(format = 'YYYY-MM-DD');
   res.unrelated_report = faker.random.number(10);
   res.inappropriate_report = faker.random.number(10);
   res.dislike = faker.random.number(1);
-  return res;
-}
+  return oneImage;
+};
 
