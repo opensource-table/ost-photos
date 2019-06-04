@@ -8,7 +8,7 @@ const path = require('path');
 app.use(cors());
 app.use(express.static(path.resolve(__dirname, '../client/public')));
 
-app.get('/photos', (req, res) => {
+app.get('/photos/:id', (req, res) => {
   db.getAllPhotos((results) => {
     res.status(200);
     res.send(results);
