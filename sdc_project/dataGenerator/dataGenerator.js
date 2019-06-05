@@ -1,27 +1,59 @@
-// `id`  //1 to end
-//  `restaurant` // name of restaurant
-//  `url` // Facker url
-//  `timestamp` // YYYY-MM-DD
-//  `unrelated_report` // ??
-//  `inappropriate_report` // ???
-//  `dislike` // 0 or 1
-
-//  1, 'Rempel Group', 'https://resizer.otstatic.com/v2/photos/large/24947294.jpg', '1977-02-12', 6, 3, 0
 
 const faker = require('faker');
 const casual = require('casual');
+const fs = require('fs');
 
-console.log(faker.date.past(10));
+let wstream = fs.createWriteStream('out.csv')
 
-const createOneData = function( id ) {
-  let oneImage = { id, };
-  res.restaurant = faker.company.companyName();
-  res.url = faker.image.food();
-  res.timestamp = casual.date(format = 'YYYY-MM-DD');
-  res.unrelated_report = faker.random.number(10);
-  res.inappropriate_report = faker.random.number(10);
-  res.dislike = faker.random.number(1);
+// const csvWriter = require('csv-write-stream');
+// let writer = csvWriter({sendHeaders: false});
+
+//Object type data
+const createOneData = function (room_id, pic_id) {
+  let oneImage = { id: room_id, pic_id };
+  oneImage.restaurant = faker.company.companyName();
+  oneImage.url = faker.image.food();
+  oneImage.timestamp = casual.date(format = 'YYYY-MM-DD');
+  oneImage.unrelated_report = faker.random.number(10);
+  oneImage.inappropriate_report = faker.random.number(10);
+  oneImage.dislike = faker.random.number(1);
   return oneImage;
 };
 
-//at least 10 images per room
+//String type data
+const createStringData = function(room_id, pic_id) {
+  return `${room_id},\
+${pic_id},\
+"${faker.company.companyName()}",\
+${faker.image.food()},\
+${casual.date(format = 'YYYY-MM-DD')},\
+${faker.random.number(10)},\
+${faker.random.number(10)},\
+${faker.random.number(1)}
+`
+}
+
+
+const createMassive = function (number) {
+  //timer start
+  let start = Date.now();
+
+  console.log('start creating csv...');
+
+  //writing csv
+  wstream.write("id,pic_id,restaurant,url,timestamp,unrelated_report,inappropriate_report,dislike\n");
+  for (let i = 0; i < number; i++) {
+    // let data = createOneData(Math.floor(i / 10), i % 10);
+    // wstream.write(data);
+    let stringData = createStringData(Math.floor(i / 10), i % 10);
+    wstream.write(stringData);
+  }
+
+  //timer stop
+  wstream.end();
+  let period = Number((Date.now() - start)/1000).toFixed(2);
+  console.log(period + ' seconds');
+};
+
+
+createMassive(100);
