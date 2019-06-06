@@ -28,7 +28,8 @@ wstream.end();
 const createMassive = function (start, end) {
   //timer start
   bar.start(end, start);
-
+  console.log('\033c');
+  
   wstream = fs.createWriteStream('data.csv', {flags: 'a'});
   let startTime = Date.now();
   //writing csv
@@ -54,7 +55,7 @@ const createMassive = function (start, end) {
     if (i === end) {
       bar.stop();
       let period = Number((Date.now() - startTime) / 1000).toFixed(2);
-      console.log(period + ' seconds');
+      console.log('\nTotal time: ' + period + ' seconds');
     }
 
     if ( i < end ) {
@@ -65,4 +66,7 @@ const createMassive = function (start, end) {
 
 //generate 100M
 createMassive(0, 10000000);
+
+//generate 1M
+// createMassive(0, 100000);
 

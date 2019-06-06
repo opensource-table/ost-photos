@@ -11,7 +11,8 @@
     "build": "webpack -d",
     "seed": "mysql -u root < schema.sql -p",
     "sql": "mysql -u root -p",
-    "test": "jest"
+    "test": "jest",
+    "100m": "node --max-old-space-size=2048 sdc_project/dataGenerator/dataGenerator.js;"
   },
   "dependencies": {
     "babel": "^6.23.0",
