@@ -8,7 +8,11 @@ const fs = require('fs');
 const cliProgress = require('cli-progress');
 const bar = new cliProgress.Bar({}, cliProgress.Presets.shades_classic);
 
-let wstream = fs.createWriteStream('data.csv', {flags: 'a'});
+const STARTPOINT = 0;
+const ENDPOINT = 10000000;
+const DATANAME = 'data.csv'
+
+let wstream = fs.createWriteStream(DATANAME);
 
 //String type data
 const createStringData = function(room_id, pic_id) {
@@ -30,7 +34,7 @@ const createMassive = function (start, end) {
   bar.start(end, start);
   console.log('\033c');
   
-  wstream = fs.createWriteStream('data.csv', {flags: 'a'});
+  wstream = fs.createWriteStream(DATANAME, {flags: 'a'});
   let startTime = Date.now();
   //writing csv
   let i = start;
@@ -65,8 +69,6 @@ const createMassive = function (start, end) {
 };
 
 //generate 100M
-createMassive(0, 10000000);
+createMassive(STARTPOINT, ENDPOINT);
 
-//generate 1M
-// createMassive(0, 100000);
 
