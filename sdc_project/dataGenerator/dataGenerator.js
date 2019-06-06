@@ -32,7 +32,7 @@ const createMassive = function (from, to) {
   function handler() {
     let ok = true;
     do {
-      i ++;
+      
 
       //counting.....
       if (i % 100000 === 0) {
@@ -41,8 +41,13 @@ const createMassive = function (from, to) {
       }
 
       //writing.......
-      let stringData = createStringData(Math.floor(i / 10), i % 10);
-      ok = wstream.write(stringData);
+      let randomNum = casual.integer(from = 10, to = 13);
+      for (let j = 0; j < randomNum; j++) {
+        let stringData = createStringData(i, j);
+        ok = wstream.write(stringData);
+      }
+
+      i ++;
     } while ( i < to && ok);
 
     if( i < to ) {
@@ -56,5 +61,5 @@ const createMassive = function (from, to) {
 };
 
 //test
-createMassive(0, 100000000);
+createMassive(0, 1000);
 
