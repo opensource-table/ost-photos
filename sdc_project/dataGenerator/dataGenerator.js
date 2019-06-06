@@ -4,6 +4,10 @@ const faker = require('faker');
 const casual = require('casual');
 const fs = require('fs');
 
+//persantagebar
+const cliProgress = require('cli-progress');
+const bar = new cliProgress.Bar({}, cliProgress.Presets.shades_classic);
+
 let wstream = fs.createWriteStream('data.csv', {flags: 'a'});
 
 //String type data
@@ -23,21 +27,19 @@ wstream.end();
 
 const createMassive = function (start, end) {
   //timer start
+  bar.start(end, start);
+
   wstream = fs.createWriteStream('data.csv', {flags: 'a'});
   let startTime = Date.now();
-  console.log('creating csv...');
   //writing csv
   let i = start;
   handler();
   function handler() {
     let ok = true;
     do {
-      
-      //counting.....
-      if (i % 10000 === 0) {
-        let temp = i / 100000;
-        console.log('hits ' + temp + ' million');
-      }
+
+      bar.update(i + 1);
+
       let stringData = '';
       //writing.......
       let randomNum = casual.integer(from = 10, to = 12);
@@ -50,6 +52,7 @@ const createMassive = function (start, end) {
 
     //timer stop
     if (i === end) {
+      bar.stop();
       let period = Number((Date.now() - startTime) / 1000).toFixed(2);
       console.log(period + ' seconds');
     }
@@ -60,6 +63,6 @@ const createMassive = function (start, end) {
   }
 };
 
-//test
+//generate 100M
 createMassive(0, 10000000);
 
