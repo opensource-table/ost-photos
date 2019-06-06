@@ -23,7 +23,7 @@ wstream.end();
 
 const createMassive = function (start, end) {
   //timer start
-  wstream = fs.createWriteStream('out.csv', {flags: 'a'});
+  wstream = fs.createWriteStream('data.csv', {flags: 'a'});
   let startTime = Date.now();
   console.log('creating csv...');
   //writing csv
