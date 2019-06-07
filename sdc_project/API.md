@@ -7,9 +7,9 @@
 | `/photos/:id`| PUT    | Update an existing photo for a specific restaurant |
 | `/photos/:id`| DELETE | Delete a photo for a specific restaurant         |
 
-**SHOW PHOTOS**
+**PHOTOS MODULE**
 ----
-  Returns all photos of the target restaurant
+  Returns all photos of a specific restaurant
 
 ### API  
  ##### GET 
@@ -72,4 +72,3 @@
  Endpoint: ```/photos/:id```
 - is to used to delete a specific item in the database. On a successful updating, a http response code of 200 (No error, operation successful). 
 - If an error occurs, it will respond with a 501(Requested HTTP operation not supported.)
-- The respond code is with a response http code of 404(not found)
