@@ -1,0 +1,15 @@
+DROP DATABASE IF EXISTS test;
+CREATE DATABASE test;
+
+\c test;
+
+CREATE TABLE photos (
+  id INTEGER PRIMARY KEY,
+  id_r INTEGER NOT NULL,
+  pic_id INTEGER NOT NULL,
+  restaurant VARCHAR NOT NULL,
+  timestamp VARCHAR NOT NULL,
+  url VARCHAR NOT NULL,
+  dislike INTEGER NOT NULL
+);
+

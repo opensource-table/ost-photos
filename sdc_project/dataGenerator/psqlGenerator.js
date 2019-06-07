@@ -13,7 +13,7 @@ const bar = new cliProgress.Bar({}, cliProgress.Presets.shades_classic);
 
 const STARTPOINT = 0;
 const ENDPOINT = 10000000; //times 10 -> data
-const DATANAME = 'data1.csv'
+const DATANAME = 'postData.csv';
 
 let wstream = fs.createWriteStream(DATANAME);
 let counter = 0;

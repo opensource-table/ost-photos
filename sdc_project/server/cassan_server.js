@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
-const faker = require('faker');
-const casual = require('casual');
+// const faker = require('faker');
+// const casual = require('casual');
 const bodyParser = require('body-parser');
 const PORT = 3005;
 
-const uuidv1 = require('uuid/v1');
+// const uuidv1 = require('uuid/v1');
 
 //cassandra
 const cassandra = require('cassandra-driver');

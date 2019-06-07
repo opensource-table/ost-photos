@@ -1,11 +1,11 @@
 
-DROP KEYSPACE IF EXISTS test;
-CREATE KEYSPACE test WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
+DROP KEYSPACE IF EXISTS opentable;
+CREATE KEYSPACE opentable WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
 
-USE test;
+USE opentable;
 
 CREATE TABLE photos (
-   id TIMEUUID PRIMARY KEY,
+   id INT PRIMARY KEY,
    id_r INT,
    pic_id INT,
    restaurant VARCHAR,
@@ -16,11 +16,13 @@ CREATE TABLE photos (
 
 -- INSERT INTO mytest (id, id_r, restaurant) VALUES (now(), 1, 'KFC');
 
-CREATE INDEX index_name ON photos(id_r);
+CREATE INDEX rest_id ON photos(id_r);
+CREATE INDEX rest_name ON photos(restaurant);
+CREATE INDEX rest_time ON photos(timestamp);
 
 
 COPY photos (id,id_r,pic_id,restaurant,timestamp,url,dislike) 
-FROM '/Users/SunWei-Tse/Google/HackReactor/opentable/ost_photos/data2.csv' 
+FROM '/Users/SunWei-Tse/Google/HackReactor/opentable/ost_photos/data1.csv' 
 WITH HEADER = TRUE;
 
 SELECT * FROM photos;
