@@ -48,7 +48,7 @@ app.delete('/', (req, res) => {
   let query = "DELETE restaurant FROM test.mytest WHERE id = ?";
   client.execute(query, [data.id])
     .then(() => {
-      res.status(201).send('successfully deleted ' + data.id);
+      res.status(201).send('successfully deleted restaurant at id: ' + data.id);
     })
     .catch((err) => {
       res.status(500).send(err);

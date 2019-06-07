@@ -15,8 +15,9 @@
  ##### GET 
  Endpoint: ```/photos/:id```
  
- - http request has been successful, it will receive a response code of 200. If an error occurs, it will respond with a 404(not found) or 400(bad request)
--  This request will get all the photos for a specific restaurant
+ - http request has been successful, it will receive a response code of 200. 
+ - If an error occurs, it will respond with a 404(not found) or 400(bad request)
+ - This request will get all the photos for a specific restaurant
 ```
  {
  id_r : 10,
@@ -31,7 +32,9 @@
 
 ##### POST 
  Endpoint: ```/photos/:id```
- - Create a new source which updates the database and save the new data into the database. If a POST request is successful, it will return a http request code of 201. 
+ - Create a new source which updates the database and save the new data into the database. 
+ - If a POST request is successful, it will return a http request code of 201. 
+ - If an error occurs, it will respond with a 501(Requested HTTP operation not supported.)
  - This request will store the updated picture that the user have put into the database.
  
 ```
@@ -49,6 +52,7 @@
 ##### PUT
  Endpoint: ```/photos/:id```
  - is updating a known source in the database. On a successful updating, a http response code of 200. 
+ - If an error occurs, it will respond with a 501(Requested HTTP operation not supported.)
  - we are updating an existing photo to a specific restaurant photo.
  
 ```
@@ -66,5 +70,6 @@
 
 ##### Delete
  Endpoint: ```/photos/:id```
-- is to used to delete a specific item in the database.
+- is to used to delete a specific item in the database. On a successful updating, a http response code of 200 (No error, operation successful). 
+- If an error occurs, it will respond with a 501(Requested HTTP operation not supported.)
 - The respond code is with a response http code of 404(not found)
