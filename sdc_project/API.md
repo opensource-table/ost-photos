@@ -15,17 +15,18 @@
  ##### GET 
  Endpoint: ```/photos/:id```
  
- - http request has been successful, it will receive a response code of 200. 
+ - http request has been successful, it will receive a response code of 200 and all the data of photos(as same as the object below).
  - If an error occurs, it will respond with a 404(not found) or 400(bad request)
  - This request will get all the photos for a specific restaurant
 ```
  {
- id_r : 10,
- pic_id: 1, 
- restaurant 'Rempel Group', 
- url: 'https://resizer.otstatic.com/v2/photos/large/24947294.jpg', 
- timestamp: '1977-02-12',
- dislike: 0
+  id: "3dc952a0-88ab-11e9-ade2-65e9db81cbe7",
+  id_r : 10,
+  pic_id: 1, 
+  restaurant 'Rempel Group', 
+  url: 'https://resizer.otstatic.com/v2/photos/large/24947294.jpg', 
+  timestamp: '1977-02-12',
+  dislike: 0
  }
 ```
 
@@ -39,6 +40,7 @@
  
 ```
 {
+    id: "3dc952a0-88ab-11e9-ade2-65e9db81cbe7",
     id_r : 10,
     pic_id: 1, 
     resturant: Taco Bowls,
@@ -57,6 +59,7 @@
  
 ```
 {
+    id: "3dc952a0-88ab-11e9-ade2-65e9db81cbe7",
     id_r : 10,
     pic_id: 1, 
     restaurant: Taco Bowls,
@@ -70,5 +73,17 @@
 
 ##### Delete
  Endpoint: ```/photos/:id```
+
+ ```
+ {
+  "id": "3dc952a0-88ab-11e9-ade2-65e9db81cbe7",
+  "id_r": 1,
+  "pic_id": 1,
+  "restaurant": "nihil",
+  "timestamp": "1977-11-05",
+  "url": "http://lorempixel.com/640/480/food",
+  "dislike": 1
+}
+```
 - is to used to delete a specific item in the database. On a successful updating, a http response code of 200 (No error, operation successful). 
 - If an error occurs, it will respond with a 501(Requested HTTP operation not supported.)
