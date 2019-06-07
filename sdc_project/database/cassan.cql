@@ -4,7 +4,7 @@ CREATE KEYSPACE test WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replicati
 
 USE test;
 
-CREATE TABLE mytest (
+CREATE TABLE photos (
    id TIMEUUID PRIMARY KEY,
    id_r INT,
    pic_id INT,
@@ -16,10 +16,11 @@ CREATE TABLE mytest (
 
 -- INSERT INTO mytest (id, id_r, restaurant) VALUES (now(), 1, 'KFC');
 
+CREATE INDEX index_name ON photos(id_r);
 
 
-COPY mytest (id,id_r,pic_id,restaurant,timestamp,url,dislike) 
+COPY photos (id,id_r,pic_id,restaurant,timestamp,url,dislike) 
 FROM '/Users/SunWei-Tse/Google/HackReactor/opentable/ost_photos/data2.csv' 
 WITH HEADER = TRUE;
 
-SELECT * FROM mytest;
+SELECT * FROM photos;

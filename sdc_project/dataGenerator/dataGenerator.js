@@ -8,26 +8,29 @@ const fs = require('fs');
 const cliProgress = require('cli-progress');
 const bar = new cliProgress.Bar({}, cliProgress.Presets.shades_classic);
 
+//uuid generator for cassandra, v1:timestamp
+const uuidv1 = require('uuid/v1');
+
 const STARTPOINT = 0;
-const ENDPOINT = 10000000;
-const DATANAME = 'data.csv'
+const ENDPOINT = 10000000; //times 10 -> data
+const DATANAME = 'data1.csv'
 
 let wstream = fs.createWriteStream(DATANAME);
 
 //String type data
 const createStringData = function(room_id, pic_id) {
-  return `${room_id},\
+  return `${uuidv1()},\
+${room_id},\
 ${pic_id},\
 ${faker.lorem.word()},\
-${faker.image.food()},\
 ${casual.date(format = 'YYYY-MM-DD')},\
+${faker.image.food()},\
 ${faker.random.number(1)}
 `
 }
 
-wstream.write("id_r,pic_id,restaurant,url,timestamp,dislike\n");
+wstream.write("id,id_r,pic_id,restaurant,timestamp,url,dislike\n");
 wstream.end();
-
 
 const createMassive = function (start, end) {
   //timer start
