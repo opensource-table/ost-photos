@@ -32,3 +32,20 @@ opentable=# select * from photos where id_r = 999968;
 (10 rows)
 
 Time: 2.663 ms
+
+
+
+//////////////----INSERT----////////////////
+opentable=# INSERT INTO photos(id,dislike,id_r,pic_id,restaurant, timestamp,url) VALUES (100000000, 1, 10000000, 0, 'wayne', '1981-06-05', 'http://lorempixel.com/640/480/food');
+ERROR:  duplicate key value violates unique constraint "photos_pkey"
+DETAIL:  Key (id)=(100000000) already exists.
+Time: 64.135 ms
+
+opentable=# INSERT INTO photos(id,dislike,id_r,pic_id,restaurant, timestamp,url) VALUES (1000000011, 1, 7777777, 12, 'wayne', '1981-06-05', 'http://lorempixel.com/640/480/food');
+INSERT 0 1
+Time: 7.215 ms
+
+//////////////----DELETE----////////////////
+opentable=# DELETE FROM photos WHERE id=1000000011;
+DELETE 1
+Time: 4.243 ms

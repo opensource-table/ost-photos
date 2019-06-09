@@ -95,3 +95,53 @@ Tracing session: 03792100-8a1f-11e9-8367-7500b41ceea3
                                                                                  Read 10 live rows and 0 tombstone cells [ReadStage-2] | 2019-06-08 11:55:41.847002 | 127.0.0.1 |           6665 | 127.0.0.1
                                                                                Merged data from memtables and 1 sstables [ReadStage-2] | 2019-06-08 11:55:41.847002 | 127.0.0.1 |           6703 | 127.0.0.1
                                                                                                                       Request complete | 2019-06-08 11:55:41.846937 | 127.0.0.1 |           6937 | 127.0.0.1
+
+
+//////////////----INSERT----////////////////
+INSERT INTO photos(id,dislike,id_r,pic_id,restaurant, timestamp,url) VALUES (100000000, 1, 10000000, 0, 'wayne', '1981-06-05', 'http://lorempixel.com/640/480/food')
+             ... ;
+
+Tracing session: 43ad2060-8a5a-11e9-8367-7500b41ceea3
+
+ activity                                                                                                                                                                                                      | timestamp                  | source    | source_elapsed | client
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+-----------+----------------+-----------
+                                                                                                                                                                                            Execute CQL3 query | 2019-06-08 18:59:49.863000 | 127.0.0.1 |              0 | 127.0.0.1
+ Parsing INSERT INTO photos(id,dislike,id_r,pic_id,restaurant, timestamp,url) VALUES (100000000, 1, 10000000, 0, 'wayne', '1981-06-05', 'http://lorempixel.com/640/480/food')\n; [Native-Transport-Requests-1] | 2019-06-08 18:59:49.865000 | 127.0.0.1 |           2395 | 127.0.0.1
+                                                                                                                                                             Preparing statement [Native-Transport-Requests-1] | 2019-06-08 18:59:49.881000 | 127.0.0.1 |          17781 | 127.0.0.1
+                                                                                                                                               Determining replicas for mutation [Native-Transport-Requests-1] | 2019-06-08 18:59:49.902000 | 127.0.0.1 |          38610 | 127.0.0.1
+                                                                                                                                                                      Appending to commitlog [MutationStage-2] | 2019-06-08 18:59:49.906000 | 127.0.0.1 |          43115 | 127.0.0.1
+                                                                                                                                                                   Adding to photos memtable [MutationStage-2] | 2019-06-08 18:59:49.910000 | 127.0.0.1 |          47593 | 127.0.0.1
+                                                                                                                                                                                              Request complete | 2019-06-08 18:59:49.978376 | 127.0.0.1 |         115376 | 127.0.0.1
+
+Time: 115376 microsecond = 115.376 ms
+
+cqlsh:opentable> INSERT INTO photos(id,dislike,id_r,pic_id,restaurant, timestamp,url) VALUES (100000000, 1, 10000000, 0, 'wayne', '1981-06-05', 'http://lorempixel.com/640/480/food') ;
+
+Tracing session: e27ab3a0-8a5b-11e9-8367-7500b41ceea3
+
+ activity                                                                                                                                                                                                     | timestamp                  | source    | source_elapsed | client
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+-----------+----------------+-----------
+                                                                                                                                                                                           Execute CQL3 query | 2019-06-08 19:11:25.786000 | 127.0.0.1 |              0 | 127.0.0.1
+ Parsing INSERT INTO photos(id,dislike,id_r,pic_id,restaurant, timestamp,url) VALUES (100000000, 1, 10000000, 0, 'wayne', '1981-06-05', 'http://lorempixel.com/640/480/food') ; [Native-Transport-Requests-1] | 2019-06-08 19:11:25.786000 | 127.0.0.1 |            122 | 127.0.0.1
+                                                                                                                                                            Preparing statement [Native-Transport-Requests-1] | 2019-06-08 19:11:25.786000 | 127.0.0.1 |            275 | 127.0.0.1
+                                                                                                                                              Determining replicas for mutation [Native-Transport-Requests-1] | 2019-06-08 19:11:25.787000 | 127.0.0.1 |            973 | 127.0.0.1
+                                                                                                                                                                     Appending to commitlog [MutationStage-2] | 2019-06-08 19:11:25.787000 | 127.0.0.1 |           1170 | 127.0.0.1
+                                                                                                                                                                  Adding to photos memtable [MutationStage-2] | 2019-06-08 19:11:25.787000 | 127.0.0.1 |           1249 | 127.0.0.1
+                                                                                                                                                                                             Request complete | 2019-06-08 19:11:25.825869 | 127.0.0.1 |          39869 | 127.0.0.1
+Time: 39.869 ms
+
+//////////////----DELETE----////////////////
+cqlsh:opentable> DELETE FROM photos where id = 100000000;
+
+Tracing session: c31374c0-8a5b-11e9-8367-7500b41ceea3
+
+ activity                                                                       | timestamp                  | source    | source_elapsed | client
+--------------------------------------------------------------------------------+----------------------------+-----------+----------------+-----------
+                                                             Execute CQL3 query | 2019-06-08 19:10:33.100000 | 127.0.0.1 |              0 | 127.0.0.1
+ Parsing DELETE FROM photos where id = 100000000; [Native-Transport-Requests-1] | 2019-06-08 19:10:33.100000 | 127.0.0.1 |            261 | 127.0.0.1
+                              Preparing statement [Native-Transport-Requests-1] | 2019-06-08 19:10:33.103000 | 127.0.0.1 |           3298 | 127.0.0.1
+                Determining replicas for mutation [Native-Transport-Requests-1] | 2019-06-08 19:10:33.104000 | 127.0.0.1 |           3720 | 127.0.0.1
+                                       Appending to commitlog [MutationStage-2] | 2019-06-08 19:10:33.104000 | 127.0.0.1 |           3865 | 127.0.0.1
+                                    Adding to photos memtable [MutationStage-2] | 2019-06-08 19:10:33.104000 | 127.0.0.1 |           3960 | 127.0.0.1
+                                                               Request complete | 2019-06-08 19:10:33.105438 | 127.0.0.1 |           5438 | 127.0.0.1
+TIME:5.438ms
