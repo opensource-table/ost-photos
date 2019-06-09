@@ -25,4 +25,6 @@ COPY photos (id,id_r,pic_id,restaurant,timestamp,url,dislike)
 FROM '/Users/SunWei-Tse/Google/HackReactor/opentable/ost_photos/data1.csv' 
 WITH HEADER = TRUE;
 
+TRACING ON;
+
 SELECT * FROM photos;

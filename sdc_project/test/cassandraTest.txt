@@ -1,0 +1,97 @@
+cqlsh:opentable> SELECT * FROM photos WHERE id_r = 999999;
+
+ id       | dislike | id_r   | pic_id | restaurant  | timestamp  | url
+----------+---------+--------+--------+-------------+------------+------------------------------------
+ 10999785 |       1 | 999999 |      5 |   accusamus | 2007-07-24 | http://lorempixel.com/640/480/food
+ 10999780 |       1 | 999999 |      0 |          et | 2000-11-12 | http://lorempixel.com/640/480/food
+ 10999786 |       1 | 999999 |      6 |         qui | 1978-05-16 | http://lorempixel.com/640/480/food
+ 10999784 |       0 | 999999 |      4 | consequatur | 1974-08-19 | http://lorempixel.com/640/480/food
+ 10999781 |       0 | 999999 |      1 |       saepe | 2002-11-11 | http://lorempixel.com/640/480/food
+ 10999787 |       0 | 999999 |      7 |         rem | 2002-01-27 | http://lorempixel.com/640/480/food
+ 10999783 |       0 | 999999 |      3 |      minima | 2009-03-22 | http://lorempixel.com/640/480/food
+ 10999788 |       1 | 999999 |      8 |          ut | 1990-10-15 | http://lorempixel.com/640/480/food
+ 10999789 |       1 | 999999 |      9 |       rerum | 2004-09-17 | http://lorempixel.com/640/480/food
+ 10999782 |       1 | 999999 |      2 |          et | 1981-06-05 | http://lorempixel.com/640/480/food
+
+(10 rows)
+
+Tracing session: 03792100-8a1f-11e9-8367-7500b41ceea3
+
+ activity                                                                                                                              | timestamp                  | source    | source_elapsed | client
+---------------------------------------------------------------------------------------------------------------------------------------+----------------------------+-----------+----------------+-----------
+                                                                                                                    Execute CQL3 query | 2019-06-08 11:55:41.840000 | 127.0.0.1 |              0 | 127.0.0.1
+                                                       Parsing SELECT * FROM photos WHERE id_r = 999999; [Native-Transport-Requests-1] | 2019-06-08 11:55:41.841000 | 127.0.0.1 |            203 | 127.0.0.1
+                                                                                     Preparing statement [Native-Transport-Requests-1] | 2019-06-08 11:55:41.841000 | 127.0.0.1 |            369 | 127.0.0.1
+                                          Index mean cardinalities are rest_id:1. Scanning with rest_id. [Native-Transport-Requests-1] | 2019-06-08 11:55:41.841000 | 127.0.0.1 |            709 | 127.0.0.1
+                                                                               Computing ranges to query [Native-Transport-Requests-1] | 2019-06-08 11:55:41.841000 | 127.0.0.1 |            790 | 127.0.0.1
+ Submitting range requests on 257 ranges with a concurrency of 257 (0.003515625 rows per range expected) [Native-Transport-Requests-1] | 2019-06-08 11:55:41.842000 | 127.0.0.1 |           1101 | 127.0.0.1
+                                                                   Submitted 1 concurrent range requests [Native-Transport-Requests-1] | 2019-06-08 11:55:41.842000 | 127.0.0.1 |           1560 | 127.0.0.1
+                                                                  Executing read on opentable.photos using index rest_id [ReadStage-2] | 2019-06-08 11:55:41.842000 | 127.0.0.1 |           1639 | 127.0.0.1
+                                                                      Executing single-partition query on photos.rest_id [ReadStage-2] | 2019-06-08 11:55:41.842000 | 127.0.0.1 |           1749 | 127.0.0.1
+                                                                                            Acquiring sstable references [ReadStage-2] | 2019-06-08 11:55:41.842000 | 127.0.0.1 |           1781 | 127.0.0.1
+                                               Skipped 0/2 non-slice-intersecting sstables, included 0 due to tombstones [ReadStage-2] | 2019-06-08 11:55:41.842000 | 127.0.0.1 |           1824 | 127.0.0.1
+                                                                                           Key cache hit for sstable 114 [ReadStage-2] | 2019-06-08 11:55:41.844000 | 127.0.0.1 |           3528 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 210 [ReadStage-2] | 2019-06-08 11:55:41.844000 | 127.0.0.1 |           3619 | 127.0.0.1
+                                                                              Executing single-partition query on photos [ReadStage-2] | 2019-06-08 11:55:41.844000 | 127.0.0.1 |           3755 | 127.0.0.1
+                                                                                            Acquiring sstable references [ReadStage-2] | 2019-06-08 11:55:41.844000 | 127.0.0.1 |           3797 | 127.0.0.1
+                                                                                               Merging memtable contents [ReadStage-2] | 2019-06-08 11:55:41.844000 | 127.0.0.1 |           3884 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 920 [ReadStage-2] | 2019-06-08 11:55:41.844000 | 127.0.0.1 |           3923 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 919 [ReadStage-2] | 2019-06-08 11:55:41.844001 | 127.0.0.1 |           3952 | 127.0.0.1
+                                                                                           Key cache hit for sstable 412 [ReadStage-2] | 2019-06-08 11:55:41.844001 | 127.0.0.1 |           3993 | 127.0.0.1
+                                                                              Executing single-partition query on photos [ReadStage-2] | 2019-06-08 11:55:41.845000 | 127.0.0.1 |           4153 | 127.0.0.1
+                                                                                            Acquiring sstable references [ReadStage-2] | 2019-06-08 11:55:41.845000 | 127.0.0.1 |           4188 | 127.0.0.1
+                                                                                               Merging memtable contents [ReadStage-2] | 2019-06-08 11:55:41.845000 | 127.0.0.1 |           4224 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 920 [ReadStage-2] | 2019-06-08 11:55:41.845001 | 127.0.0.1 |           4364 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 919 [ReadStage-2] | 2019-06-08 11:55:41.845001 | 127.0.0.1 |           4420 | 127.0.0.1
+                                                                                           Key cache hit for sstable 412 [ReadStage-2] | 2019-06-08 11:55:41.845001 | 127.0.0.1 |           4480 | 127.0.0.1
+                                                                              Executing single-partition query on photos [ReadStage-2] | 2019-06-08 11:55:41.845001 | 127.0.0.1 |           4598 | 127.0.0.1
+                                                                                            Acquiring sstable references [ReadStage-2] | 2019-06-08 11:55:41.845001 | 127.0.0.1 |           4631 | 127.0.0.1
+                                                                                               Merging memtable contents [ReadStage-2] | 2019-06-08 11:55:41.845001 | 127.0.0.1 |           4659 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 920 [ReadStage-2] | 2019-06-08 11:55:41.845001 | 127.0.0.1 |           4690 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 919 [ReadStage-2] | 2019-06-08 11:55:41.845001 | 127.0.0.1 |           4731 | 127.0.0.1
+                                                                                           Key cache hit for sstable 412 [ReadStage-2] | 2019-06-08 11:55:41.845001 | 127.0.0.1 |           4824 | 127.0.0.1
+                                                                              Executing single-partition query on photos [ReadStage-2] | 2019-06-08 11:55:41.845001 | 127.0.0.1 |           5043 | 127.0.0.1
+                                                                                            Acquiring sstable references [ReadStage-2] | 2019-06-08 11:55:41.845001 | 127.0.0.1 |           5073 | 127.0.0.1
+                                                                                               Merging memtable contents [ReadStage-2] | 2019-06-08 11:55:41.846000 | 127.0.0.1 |           5098 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 920 [ReadStage-2] | 2019-06-08 11:55:41.846000 | 127.0.0.1 |           5130 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 919 [ReadStage-2] | 2019-06-08 11:55:41.846000 | 127.0.0.1 |           5154 | 127.0.0.1
+                                                                                           Key cache hit for sstable 412 [ReadStage-2] | 2019-06-08 11:55:41.846000 | 127.0.0.1 |           5185 | 127.0.0.1
+                                                                              Executing single-partition query on photos [ReadStage-2] | 2019-06-08 11:55:41.846000 | 127.0.0.1 |           5268 | 127.0.0.1
+                                                                                            Acquiring sstable references [ReadStage-2] | 2019-06-08 11:55:41.846000 | 127.0.0.1 |           5307 | 127.0.0.1
+                                                                                               Merging memtable contents [ReadStage-2] | 2019-06-08 11:55:41.846001 | 127.0.0.1 |           5360 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 920 [ReadStage-2] | 2019-06-08 11:55:41.846001 | 127.0.0.1 |           5391 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 919 [ReadStage-2] | 2019-06-08 11:55:41.846001 | 127.0.0.1 |           5428 | 127.0.0.1
+                                                                                           Key cache hit for sstable 412 [ReadStage-2] | 2019-06-08 11:55:41.846001 | 127.0.0.1 |           5453 | 127.0.0.1
+                                                                              Executing single-partition query on photos [ReadStage-2] | 2019-06-08 11:55:41.846001 | 127.0.0.1 |           5546 | 127.0.0.1
+                                                                                            Acquiring sstable references [ReadStage-2] | 2019-06-08 11:55:41.846001 | 127.0.0.1 |           5575 | 127.0.0.1
+                                                                                               Merging memtable contents [ReadStage-2] | 2019-06-08 11:55:41.846001 | 127.0.0.1 |           5597 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 920 [ReadStage-2] | 2019-06-08 11:55:41.846001 | 127.0.0.1 |           5624 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 919 [ReadStage-2] | 2019-06-08 11:55:41.846001 | 127.0.0.1 |           5664 | 127.0.0.1
+                                                                                           Key cache hit for sstable 412 [ReadStage-2] | 2019-06-08 11:55:41.846002 | 127.0.0.1 |           5702 | 127.0.0.1
+                                                                              Executing single-partition query on photos [ReadStage-2] | 2019-06-08 11:55:41.846002 | 127.0.0.1 |           5782 | 127.0.0.1
+                                                                                            Acquiring sstable references [ReadStage-2] | 2019-06-08 11:55:41.846002 | 127.0.0.1 |           5819 | 127.0.0.1
+                                                                                               Merging memtable contents [ReadStage-2] | 2019-06-08 11:55:41.846002 | 127.0.0.1 |           5851 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 920 [ReadStage-2] | 2019-06-08 11:55:41.846002 | 127.0.0.1 |           5877 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 919 [ReadStage-2] | 2019-06-08 11:55:41.846002 | 127.0.0.1 |           5901 | 127.0.0.1
+                                                                                           Key cache hit for sstable 412 [ReadStage-2] | 2019-06-08 11:55:41.846002 | 127.0.0.1 |           5934 | 127.0.0.1
+                                                                              Executing single-partition query on photos [ReadStage-2] | 2019-06-08 11:55:41.846002 | 127.0.0.1 |           6012 | 127.0.0.1
+                                                                                            Acquiring sstable references [ReadStage-2] | 2019-06-08 11:55:41.846002 | 127.0.0.1 |           6046 | 127.0.0.1
+                                                                                               Merging memtable contents [ReadStage-2] | 2019-06-08 11:55:41.846002 | 127.0.0.1 |           6067 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 920 [ReadStage-2] | 2019-06-08 11:55:41.847000 | 127.0.0.1 |           6091 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 919 [ReadStage-2] | 2019-06-08 11:55:41.847000 | 127.0.0.1 |           6129 | 127.0.0.1
+                                                                                           Key cache hit for sstable 412 [ReadStage-2] | 2019-06-08 11:55:41.847000 | 127.0.0.1 |           6153 | 127.0.0.1
+                                                                              Executing single-partition query on photos [ReadStage-2] | 2019-06-08 11:55:41.847000 | 127.0.0.1 |           6225 | 127.0.0.1
+                                                                                            Acquiring sstable references [ReadStage-2] | 2019-06-08 11:55:41.847000 | 127.0.0.1 |           6260 | 127.0.0.1
+                                                                                               Merging memtable contents [ReadStage-2] | 2019-06-08 11:55:41.847000 | 127.0.0.1 |           6281 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 920 [ReadStage-2] | 2019-06-08 11:55:41.847001 | 127.0.0.1 |           6305 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 919 [ReadStage-2] | 2019-06-08 11:55:41.847001 | 127.0.0.1 |           6334 | 127.0.0.1
+                                                                                           Key cache hit for sstable 412 [ReadStage-2] | 2019-06-08 11:55:41.847001 | 127.0.0.1 |           6368 | 127.0.0.1
+                                                                              Executing single-partition query on photos [ReadStage-2] | 2019-06-08 11:55:41.847001 | 127.0.0.1 |           6435 | 127.0.0.1
+                                                                                            Acquiring sstable references [ReadStage-2] | 2019-06-08 11:55:41.847001 | 127.0.0.1 |           6468 | 127.0.0.1
+                                                                                               Merging memtable contents [ReadStage-2] | 2019-06-08 11:55:41.847001 | 127.0.0.1 |           6488 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 920 [ReadStage-2] | 2019-06-08 11:55:41.847001 | 127.0.0.1 |           6512 | 127.0.0.1
+                                                                                Bloom filter allows skipping sstable 919 [ReadStage-2] | 2019-06-08 11:55:41.847001 | 127.0.0.1 |           6564 | 127.0.0.1
+                                                                                           Key cache hit for sstable 412 [ReadStage-2] | 2019-06-08 11:55:41.847001 | 127.0.0.1 |           6592 | 127.0.0.1
+                                                                                 Read 10 live rows and 0 tombstone cells [ReadStage-2] | 2019-06-08 11:55:41.847002 | 127.0.0.1 |           6665 | 127.0.0.1
+                                                                               Merged data from memtables and 1 sstables [ReadStage-2] | 2019-06-08 11:55:41.847002 | 127.0.0.1 |           6703 | 127.0.0.1
+                                                                                                                      Request complete | 2019-06-08 11:55:41.846937 | 127.0.0.1 |           6937 | 127.0.0.1

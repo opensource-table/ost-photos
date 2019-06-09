@@ -14,7 +14,8 @@
     "test": "jest",
     "bigdata": "node --max-old-space-size=2048 sdc_project/dataGenerator/dataGenerator.js;",
     "cassan-schema": "cqlsh -e \"SOURCE '/Users/SunWei-Tse/Google/HackReactor/opentable/ost_photos/sdc_project/database/cassan.cql'\"",
-    "cassan-server": "nodemon sdc_project/server/cassan_server.js"
+    "cassan-server": "nodemon sdc_project/server/cassan_server.js",
+    "elephant-schema": "psql postgres < /Users/SunWei-Tse/Google/HackReactor/opentable/ost_photos/sdc_project/database/postgres.sql"
   },
   "dependencies": {
     "babel": "^6.23.0",
