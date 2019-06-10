@@ -15,7 +15,8 @@
     "bigdata": "node --max-old-space-size=2048 sdc_project/dataGenerator/dataGenerator.js;",
     "cassan-schema": "cqlsh -e \"SOURCE '/Users/SunWei-Tse/Google/HackReactor/opentable/ost_photos/sdc_project/database/cassan.cql'\"",
     "cassan-server": "nodemon sdc_project/server/cassan_server.js",
-    "elephant-schema": "psql postgres < /Users/SunWei-Tse/Google/HackReactor/opentable/ost_photos/sdc_project/database/postgres.sql"
+    "elephant-schema": "psql postgres < /Users/SunWei-Tse/Google/HackReactor/opentable/ost_photos/sdc_project/database/postgres.sql",
+    "elephant-server": "nodemon sdc_project/server/postgres_server.js"
   },
   "dependencies": {
     "babel": "^6.23.0",
@@ -32,6 +33,7 @@
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "mysql": "^2.17.1",
+    "pg": "^7.11.0",
     "pq": "0.0.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
