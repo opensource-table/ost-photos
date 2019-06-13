@@ -10,7 +10,7 @@ app.use(express.static(path.resolve(__dirname, '../client/public')));
 
 //TODO:
 //this server doesnt accept id, refactor the request
-app.get('/photos/:id/', (req, res) => {
+app.get('/photos/', (req, res) => {
   db.getAllPhotos((results) => {
     res.status(200);
     res.send(results);

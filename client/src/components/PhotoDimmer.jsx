@@ -21,7 +21,7 @@ class PhotoDimmer extends React.Component {
   }
   clickRight() {
     // TODO dynamic to pic count
-    if (this.state.carouselId < 10) {
+    if (this.state.carouselId < 9) {
       console.log('current pic id', this.state.carouselId);
       this.setState({ carouselId: this.state.carouselId + 1 });
     }
