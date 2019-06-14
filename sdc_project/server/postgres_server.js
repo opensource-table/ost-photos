@@ -51,7 +51,7 @@ app.get('/photos', (req, res) => {
 //   let id_r = req.params.id_r;
 //   let newPhoto = req.body;
 //   // res.status(200).send(newPhoto);
-//   pool.query(`INSERT INTO photos(id, id_r, pic_id, restaurant, timestamp, url, dislike) VALUES (${newPhoto.id}, ${id_r}, ${newPhoto.pic_id}, ${newPhoto.restaurant}, ${newPhoto.timestamp}, ${newPhoto.url}, ${newPhoto.dislike});`)
+//   pool.query(`INSERT INTO photos(id, id_r, pic_id, resName, timestamp, url, dislike) VALUES (${newPhoto.id}, ${id_r}, ${newPhoto.pic_id}, ${newPhoto.resName, newPhoto.timestamp}, ${newPhoto.url}, ${newPhoto.dislike});`)
 //     .then(() => {
 //       res.status(201).send('success');
 //     })
