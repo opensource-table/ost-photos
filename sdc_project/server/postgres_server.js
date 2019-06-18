@@ -22,7 +22,7 @@ const pool = new Pool({
   host: '3.18.106.7',
   database: 'opentable',
   user: 'postgres',
-  password: '',
+  password: '1234',
   port: '5432',
 });
 
