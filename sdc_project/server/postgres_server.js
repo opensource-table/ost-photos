@@ -19,14 +19,17 @@ app.use(express.static(path.resolve(__dirname, '../../client/public')));
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  host: '3.18.106.7:5432',
-  database: 'opentable'
+  host: '3.18.106.7',
+  database: 'opentable',
+  user: 'postgres',
+  password: '',
+  port: '5432',
 });
 
 //Connect to PostgreSQL
 pool.connect((err, client, release) => {
   if(err) {
-    res.status(500).send(err);
+    // res.status(500).send(err);
     return;
   }
 });
