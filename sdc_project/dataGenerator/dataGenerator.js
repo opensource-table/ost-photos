@@ -12,8 +12,8 @@ const bar = new cliProgress.Bar({}, cliProgress.Presets.shades_classic);
 // const uuidv1 = require('uuid/v1');
 
 const STARTPOINT = 0;
-const ENDPOINT = 100; //times 10 -> data
-const DATANAME = 'data2.csv'
+const ENDPOINT = 1000000; //times 10 -> data
+const DATANAME = 'data3.csv'
 
 let wstream = fs.createWriteStream(DATANAME);
 let counter = 0;

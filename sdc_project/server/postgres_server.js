@@ -36,7 +36,7 @@ pool.connect((err, client, release) => {
 //GET REQUEST
 app.get('/photos', (req, res) => {
   let from = 1;
-  let to = 10000000;
+  let to = 1000000;
   let randId = casual.integer(from, to).toString();
   pool.query(`SELECT * FROM photos WHERE id_r = ${randId}`)
     .then((data) => {
