@@ -29,7 +29,7 @@ const pool = new Pool({
 //Connect to PostgreSQL
 pool.connect((err, client, release) => {
   if(err) {
-    // res.status(500).send(err);
+    console.log(err);
     return;
   }
 });
