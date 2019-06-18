@@ -23,7 +23,7 @@ const pool = new Pool({
   database: 'opentable',
   user: 'postgres',
   password: '1234',
-  port: 5432
+  port: '5432'
 });
 
 //Connect to PostgreSQL
