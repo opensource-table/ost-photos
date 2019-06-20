@@ -18,7 +18,7 @@ class App extends React.Component {
   }
   componentDidMount() {
     $.get({
-      url: `http://18.219.198.117:3006/photos/`,
+      url: `http://18.219.137.216:3006/photos/`,
       dataType: 'json',
       success: allPhotos => { this.setState({ photos: allPhotos, isLoading: false }) },
       error: err => { console.log('Failed..', err); },
